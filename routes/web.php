@@ -80,11 +80,15 @@ Route::prefix('seller')->group(function () {
 
 // Legal Routes for Midtrans Compliance
 Route::get('/privacy-policy', function () {
-    return view('legal.privacy'); })->name('legal.privacy');
+    return view('legal.privacy');
+})->name('legal.privacy');
 Route::get('/terms-conditions', function () {
-    return view('legal.terms'); })->name('legal.terms');
+    return view('legal.terms');
+})->name('legal.terms');
 Route::get('/refund-policy', function () {
-    return view('legal.refund'); })->name('legal.refund');
+    return view('legal.refund');
+})->name('legal.refund');
 Route::get('/contact-us', function () {
     return view('legal.contact'); })->name('legal.contact');
-
+Route::get('/data-deletion', function () {
+    return view('legal.data_deletion'); })->name('legal.data_deletion');
