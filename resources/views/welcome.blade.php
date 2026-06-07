@@ -450,18 +450,20 @@
                     ZEVEN MARKETPLACE</span>
             </div>
             <div class="flex flex-wrap justify-center gap-8">
-                <a href="{{ route('legal.privacy') }}"
-                    class="hover:text-emerald-800 transition-all border-b-2 border-transparent hover:border-emerald-800 pb-0.5 text-gray-400 no-underline">Privacy
-                    Policy</a>
-                <a href="{{ route('legal.terms') }}"
-                    class="hover:text-emerald-800 transition-all border-b-2 border-transparent hover:border-emerald-800 pb-0.5 text-gray-400 no-underline">Terms
-                    of Service</a>
-                <a href="{{ route('legal.refund') }}"
-                    class="hover:text-emerald-800 transition-all border-b-2 border-transparent hover:border-emerald-800 pb-0.5 text-gray-400 no-underline">Refund
-                    Policy</a>
-                <a href="{{ route('legal.contact') }}"
-                    class="hover:text-emerald-800 transition-all border-b-2 border-transparent hover:border-emerald-800 pb-0.5 text-gray-400 no-underline">Contact
-                    Us</a>
+                    <a href="{{ route('legal.privacy') }}"
+                        class="text-[10px] font-black text-gray-400 hover:text-emerald-800 transition-all uppercase tracking-[0.2em] border-b-2 border-transparent hover:border-emerald-800 pb-1">Privacy
+                        Policy</a>
+                    <a href="{{ route('legal.terms') }}"
+                        class="text-[10px] font-black text-gray-400 hover:text-emerald-800 transition-all uppercase tracking-[0.2em] border-b-2 border-transparent hover:border-emerald-800 pb-1">Terms
+                        of Service</a>
+                    <a href="{{ route('legal.refund') }}"
+                        class="text-[10px] font-black text-gray-400 hover:text-emerald-800 transition-all uppercase tracking-[0.2em] border-b-2 border-transparent hover:border-emerald-800 pb-1">Refund
+                        Policy</a>
+                    <a href="{{ route('legal.contact') }}"
+                        class="text-[10px] font-black text-gray-400 hover:text-emerald-800 transition-all uppercase tracking-[0.2em] border-b-2 border-transparent hover:border-emerald-800 pb-1">Contact
+                        Us</a>
+                    <a href="{{ route('legal.data_deletion') }}"
+                        class="text-[10px] font-black text-gray-400 hover:text-emerald-800 transition-all uppercase tracking-[0.2em] border-b-2 border-transparent hover:border-emerald-800 pb-1">Data Deletion</a>
             </div>
         </div>
     </footer>
