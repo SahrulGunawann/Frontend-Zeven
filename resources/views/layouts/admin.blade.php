@@ -16,24 +16,34 @@
             --zeven-secondary: #C68E17;
             --zeven-bg: #F9F6F0;
         }
-        body, html {
+
+        body,
+        html {
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
             background-color: var(--zeven-bg) !important;
         }
-        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { 
-            background: linear-gradient(to bottom, #114232, #295546); 
-            border-radius: 10px; 
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
         }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #114232, #295546);
+            border-radius: 10px;
+        }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.02);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.02);
         }
 
         /* Premium Custom Dropdown */
@@ -49,23 +59,26 @@
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             user-select: none;
         }
+
         .custom-select-trigger:hover {
             border-color: var(--zeven-secondary);
             box-shadow: 0 4px 12px rgba(198, 142, 23, 0.08);
         }
+
         .custom-select-menu {
             position: absolute;
             top: calc(100% + 8px);
             left: 0;
             right: 0;
             background: white;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 1rem;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
             z-index: 50;
             overflow: hidden;
             transform-origin: top;
         }
+
         .custom-select-item {
             display: flex;
             align-items: center;
@@ -77,11 +90,13 @@
             cursor: pointer;
             transition: all 0.15s ease;
         }
+
         .custom-select-item:hover {
             background-color: #f9fafb;
             color: var(--zeven-primary);
             padding-left: 1.25rem;
         }
+
         .custom-select-item.active {
             background-color: rgba(17, 66, 50, 0.04);
             color: var(--zeven-primary);
@@ -143,10 +158,17 @@
                         window.location.href = "{{ route('admin.chats') }}";
                     } else if (notif.type === 'user') {
                         window.location.href = "{{ route('admin.users') }}";
-                    } else if (notif.type === 'stock') {
+                    } else if (notif.type === 'stock' || notif.type === 'product') {
                         window.location.href = "{{ route('admin.products') }}";
-                    } else if (notif.type === 'withdrawal') {
+                    } else if (notif.type === 'withdrawal' || notif.type === 'balance') {
                         window.location.href = "{{ route('admin.withdrawals') }}";
+                    } else if (notif.type === 'transaction' || notif.type === 'order') {
+                        window.location.href = "{{ route('admin.transactions') }}";
+                    } else if (notif.type === 'system') {
+                        window.location.href = "{{ route('admin.settings') }}";
+                    } else {
+                        // Default fallback
+                        window.location.href = "{{ route('admin.dashboard') }}";
                     }
                 }
             }
@@ -164,13 +186,15 @@
             <div class="p-8 border-b border-gray-50">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 flex-shrink-0">
-                        <img src="{{ asset('assets/img/logo_zeven.png') }}" alt="Z7" class="w-full h-full object-contain rounded-xl">
+                        <img src="{{ asset('assets/img/logo_zeven.png') }}" alt="Z7"
+                            class="w-full h-full object-contain rounded-xl">
                     </div>
                     <div class="min-w-0">
                         <h2 class="font-extrabold text-gray-900 text-base tracking-tight">Zeven Admin</h2>
                         <div class="flex items-center gap-1.5">
                             <div class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></div>
-                            <p class="text-[10px] text-amber-600 font-bold uppercase tracking-widest truncate">Pusat Kontrol</p>
+                            <p class="text-[10px] text-amber-600 font-bold uppercase tracking-widest truncate">Pusat
+                                Kontrol</p>
                         </div>
                     </div>
                 </div>
@@ -196,7 +220,8 @@
                             <a href="{{ route($item['route']) }}"
                                 class="flex items-center gap-3.5 px-5 py-3.5 rounded-2xl transition-all duration-300 group {{ request()->routeIs($item['route']) ? 'bg-gradient-to-r from-amber-50 to-white text-amber-900 font-bold shadow-sm border-l-4 border-amber-600' : 'text-gray-500 hover:bg-gray-50 hover:text-emerald-800' }}">
                                 <div class="transition-transform duration-300 group-hover:scale-110">
-                                    <i data-lucide="{{ $item['icon'] }}" class="w-5 h-5 {{ request()->routeIs($item['route']) ? 'text-amber-700' : 'text-emerald-700' }}"></i>
+                                    <i data-lucide="{{ $item['icon'] }}"
+                                        class="w-5 h-5 {{ request()->routeIs($item['route']) ? 'text-amber-700' : 'text-emerald-700' }}"></i>
                                 </div>
                                 <span class="truncate text-sm tracking-wide">{{ $item['label'] }}</span>
                             </a>
@@ -318,7 +343,8 @@
                                 @if(session('user.avatar_url'))
                                     <img src="{{ session('user.avatar_url') }}" class="w-9 h-9 object-cover" alt="Avatar">
                                 @else
-                                    <span class="text-white text-sm font-black select-none">{{ strtoupper(substr(session('user.name', 'A'), 0, 1)) }}</span>
+                                    <span
+                                        class="text-white text-sm font-black select-none">{{ strtoupper(substr(session('user.name', 'A'), 0, 1)) }}</span>
                                 @endif
                             </div>
                             <div class="text-left hidden md:block">

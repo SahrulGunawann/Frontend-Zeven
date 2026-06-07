@@ -200,10 +200,11 @@
                         } else {
                             window.location.href = "{{ route('seller.chats') }}";
                         }
-                    } else if (notif.type === 'order') {
-                        const parts = notif.id.split('_');
+                    } else if (notif.type === 'order' || (notif.title && notif.title.includes('Pesanan'))) {
+                        // Jika ada ID pesanan di ID notifikasi (format: order_123)
+                        const parts = String(notif.id).split('_');
                         const orderId = parts[1];
-                        if (orderId) {
+                        if (orderId && !isNaN(orderId)) {
                             window.location.href = "/seller/orders/" + orderId;
                         } else {
                             window.location.href = "{{ route('seller.orders') }}";
@@ -212,8 +213,10 @@
                         window.location.href = "{{ route('seller.reviews') }}";
                     } else if (notif.type === 'stock' || (notif.title && notif.title.includes('Stok'))) {
                         window.location.href = "{{ route('seller.products') }}";
-                    } else if (notif.type === 'withdrawal_response') {
+                    } else if (notif.type === 'withdrawal_response' || notif.type === 'balance' || (notif.title && notif.title.includes('Saldo'))) {
                         window.location.href = "{{ route('seller.transactions') }}";
+                    } else {
+                        window.location.href = "{{ route('seller.dashboard') }}";
                     }
                 }
             }
