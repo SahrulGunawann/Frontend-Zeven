@@ -240,10 +240,7 @@
                         Menunggu Pembayaran
                     </div>
                 @endif
-                <button class="w-full py-3 border border-gray-200 text-gray-600 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-gray-50 transition-all">
-                    <i data-lucide="printer" class="w-4 h-4"></i>
-                    Cetak Label Pengiriman
-                </button>
+
             </div>
         </div>
     </div>
