@@ -322,7 +322,7 @@
                     aplikasi mobile Zeven Marketplace.
                 </div>
 
-                <a href="#" class="store-badge">
+                <a href="https://play.google.com/store/apps/details?id=com.zeven.marketplace" class="store-badge">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
                         alt="Get it on Google Play" style="height: 50px;">
                 </a>
