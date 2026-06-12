@@ -4,9 +4,9 @@
 
 @section('content')
     <div x-data="chatSystem()" x-init="init()"
-        class="bg-white rounded-xl shadow-sm border border-gray-100 h-[calc(100vh-12rem)] flex overflow-hidden">
+        class="bg-white rounded-xl shadow-sm border border-gray-100 h-[calc(100vh-12rem)] flex overflow-hidden relative">
         <!-- Sidebar Chats -->
-        <div class="w-80 border-r border-gray-200 flex flex-col shrink-0">
+        <div :class="{'hidden md:flex': showChat, 'flex': !showChat}" class="w-full md:w-80 border-r border-gray-200 flex-col shrink-0">
             <div class="p-4 border-b border-gray-200">
                 <h2 class="text-lg font-bold text-gray-900 mb-3">Daftar Chat</h2>
                 <div class="relative">
@@ -58,7 +58,7 @@
         </div>
 
         <!-- Chat Area -->
-        <div class="flex-1 flex flex-col bg-gray-50/20 relative">
+        <div :class="{'flex': showChat, 'hidden md:flex': !showChat}" class="flex-1 flex-col bg-gray-50/20 relative">
             <!-- Overlay Loading -->
             <div x-show="loading"
                 class="absolute inset-0 bg-white/50 z-50 flex items-center justify-center backdrop-blur-[1px]">
@@ -78,7 +78,10 @@
             <div x-show="selectedContact" class="flex-1 flex flex-col overflow-hidden">
                 <!-- Chat Header -->
                 <div class="p-4 bg-white border-b border-gray-200 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <button @click="showChat = false" class="md:hidden p-2 -ml-2 text-gray-400 hover:text-amber-600">
+                            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                        </button>
                         <div :class="selectedContact?.role === 'seller' ? 'bg-emerald-100' : 'bg-emerald-50'"
                             class="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden">
                             <img x-show="selectedContact?.avatar" :src="selectedContact?.avatar"
@@ -186,6 +189,7 @@
                     contacts: [],
                     searchQuery: '',
                     selectedContact: null,
+                    showChat: false,
                     messages: [],
                     newMessage: '',
                     pollingInterval: null,
@@ -314,6 +318,7 @@
                         }
 
                         this.selectedContact = contact;
+                        this.showChat = true;
 
                         // Unhide if hidden
                         this.hiddenContactIds = this.hiddenContactIds.filter(id => id != contact.id);
